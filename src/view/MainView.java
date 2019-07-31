@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -19,11 +20,11 @@ public class MainView extends javax.swing.JFrame {
      */
     public MainView() {
         initComponents();
-        
+
         setExtendedState(JFrame.MAXIMIZED_HORIZ);
         setVisible(true);
         setResizable(false);
-        
+
     }
 
     /**
@@ -55,6 +56,10 @@ public class MainView extends javax.swing.JFrame {
         guruPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        btn_guru_tambah_div = new javax.swing.JPanel();
+        btn_guru_tambah = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblGuru = new javax.swing.JTable();
         tingkatPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -290,6 +295,7 @@ public class MainView extends javax.swing.JFrame {
         );
 
         mainPanel.setBackground(new java.awt.Color(236, 240, 241));
+        mainPanel.setPreferredSize(new java.awt.Dimension(940, 706));
         mainPanel.setLayout(new java.awt.CardLayout());
 
         berandaPanel.setBackground(new java.awt.Color(236, 240, 241));
@@ -329,18 +335,72 @@ public class MainView extends javax.swing.JFrame {
             berandaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(berandaPanelLayout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(635, Short.MAX_VALUE))
+                .addContainerGap(641, Short.MAX_VALUE))
         );
 
         mainPanel.add(berandaPanel, "card2");
 
         guruPanel.setBackground(new java.awt.Color(236, 240, 241));
+        guruPanel.setPreferredSize(new java.awt.Dimension(946, 700));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(44, 62, 80));
         jLabel4.setText("Guru");
+
+        btn_guru_tambah_div.setBackground(new java.awt.Color(41, 128, 185));
+        btn_guru_tambah_div.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_guru_tambah_div.setPreferredSize(new java.awt.Dimension(120, 40));
+        btn_guru_tambah_div.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_guru_tambah_divMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_guru_tambah_divMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_guru_tambah_divMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_guru_tambah_divMouseReleased(evt);
+            }
+        });
+
+        btn_guru_tambah.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_guru_tambah.setForeground(new java.awt.Color(255, 255, 255));
+        btn_guru_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_guru_tambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-plus-math-16.png")); // NOI18N
+        btn_guru_tambah.setText("Tambah Guru");
+        btn_guru_tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guru_tambahMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_guru_tambahMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_guru_tambahMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_guru_tambahMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btn_guru_tambahMouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btn_guru_tambah_divLayout = new javax.swing.GroupLayout(btn_guru_tambah_div);
+        btn_guru_tambah_div.setLayout(btn_guru_tambah_divLayout);
+        btn_guru_tambah_divLayout.setHorizontalGroup(
+            btn_guru_tambah_divLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btn_guru_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+        );
+        btn_guru_tambah_divLayout.setVerticalGroup(
+            btn_guru_tambah_divLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btn_guru_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -349,29 +409,57 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
-                .addContainerGap(1666, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 683, Short.MAX_VALUE)
+                .addComponent(btn_guru_tambah_div, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(btn_guru_tambah_div, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        tblGuru.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Guru", "Nama", "E-mail", "Tanggal Lahir", "Telepon", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblGuru);
 
         javax.swing.GroupLayout guruPanelLayout = new javax.swing.GroupLayout(guruPanel);
         guruPanel.setLayout(guruPanelLayout);
         guruPanelLayout.setHorizontalGroup(
             guruPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guruPanelLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(guruPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(859, Short.MAX_VALUE))
+            .addGroup(guruPanelLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         guruPanelLayout.setVerticalGroup(
             guruPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(guruPanelLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(635, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addGap(54, 54, 54))
         );
 
         mainPanel.add(guruPanel, "card3");
@@ -622,7 +710,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(pelajaranPanel);
         mainPanel.repaint();
@@ -635,7 +723,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(guruPanel);
         mainPanel.repaint();
@@ -648,7 +736,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(tingkatPanel);
         mainPanel.repaint();
@@ -661,7 +749,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(siswaPanel);
         mainPanel.repaint();
@@ -674,7 +762,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(orangTuaPanel);
         mainPanel.repaint();
@@ -687,7 +775,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(kelasPanel);
         mainPanel.repaint();
@@ -700,7 +788,7 @@ public class MainView extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.repaint();
         mainPanel.revalidate();
-        
+
         //add panel
         mainPanel.add(berandaPanel);
         mainPanel.repaint();
@@ -711,21 +799,64 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
         AboutView aboutView = new AboutView();
         aboutView.setVisible(true);
-            
+
     }//GEN-LAST:event_btn_menu_tentangKamiActionPerformed
 
     private void btn_menu_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_keluarActionPerformed
         // TODO add your handling code here:
         int dialogBtn = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog(this, "Keluar dari Sekolah Apps ? ", "Exit Confirmation", dialogBtn);
-        
+
         if (dialogResult == 0) {
             //true condition
             System.exit(0);
-        }else{
+        } else {
             //false condition
         }
     }//GEN-LAST:event_btn_menu_keluarActionPerformed
+
+    private void btn_guru_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMouseEntered
+        // TODO add your handling code here:
+        btn_guru_tambah_div.setBackground(new Color(16, 103, 160));
+    }//GEN-LAST:event_btn_guru_tambahMouseEntered
+
+    private void btn_guru_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMouseExited
+        // TODO add your handling code here:
+        btn_guru_tambah_div.setBackground(new Color(41, 128, 185));
+    }//GEN-LAST:event_btn_guru_tambahMouseExited
+
+    private void btn_guru_tambahMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMousePressed
+        // TODO add your handling code here:
+        btn_guru_tambah_div.setBackground(new Color(0, 77, 134));
+    }//GEN-LAST:event_btn_guru_tambahMousePressed
+
+    private void btn_guru_tambah_divMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambah_divMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guru_tambah_divMouseEntered
+
+    private void btn_guru_tambah_divMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambah_divMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guru_tambah_divMouseExited
+
+    private void btn_guru_tambah_divMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambah_divMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guru_tambah_divMousePressed
+
+    private void btn_guru_tambah_divMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambah_divMouseReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btn_guru_tambah_divMouseReleased
+
+    private void btn_guru_tambahMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMouseReleased
+        // TODO add your handling code here:
+        btn_guru_tambah_div.setBackground(new Color(41, 128, 185));
+    }//GEN-LAST:event_btn_guru_tambahMouseReleased
+
+    private void btn_guru_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMouseClicked
+        // TODO add your handling code here:
+        guruTambahView guruTambah = new guruTambahView();
+        guruTambah.setVisible(true);
+    }//GEN-LAST:event_btn_guru_tambahMouseClicked
 
     /**
      * @param args the command line arguments
@@ -765,6 +896,8 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel berandaPanel;
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JLabel btn_guru_tambah;
+    private javax.swing.JPanel btn_guru_tambah_div;
     private javax.swing.JButton btn_menu_beranda;
     private javax.swing.JButton btn_menu_guru1;
     private javax.swing.JButton btn_menu_kelas;
@@ -790,6 +923,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel kelasPanel;
     private javax.swing.JPanel mainPanel;
@@ -797,6 +931,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel orangTuaPanel;
     private javax.swing.JPanel pelajaranPanel;
     private javax.swing.JPanel siswaPanel;
+    private javax.swing.JTable tblGuru;
     private javax.swing.JPanel tingkatPanel;
     // End of variables declaration//GEN-END:variables
 }
