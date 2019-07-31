@@ -6,6 +6,7 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,10 +46,12 @@ public class MainView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btn_menu_beranda = new javax.swing.JButton();
+        btn_menu_tentangKami = new javax.swing.JButton();
+        btn_menu_keluar = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         berandaPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         guruPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -161,6 +164,7 @@ public class MainView extends javax.swing.JFrame {
         btn_menu_kelas.setContentAreaFilled(false);
         btn_menu_kelas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_menu_kelas.setIconTextGap(16);
+        btn_menu_kelas.setSelected(true);
         btn_menu_kelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_menu_kelasActionPerformed(evt);
@@ -185,6 +189,38 @@ public class MainView extends javax.swing.JFrame {
         btn_menu_beranda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_menu_berandaActionPerformed(evt);
+            }
+        });
+
+        btn_menu_tentangKami.setBackground(new java.awt.Color(41, 128, 185));
+        btn_menu_tentangKami.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        btn_menu_tentangKami.setForeground(new java.awt.Color(255, 255, 255));
+        btn_menu_tentangKami.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-info-32.png")); // NOI18N
+        btn_menu_tentangKami.setText("Tentang Kami");
+        btn_menu_tentangKami.setBorder(null);
+        btn_menu_tentangKami.setContentAreaFilled(false);
+        btn_menu_tentangKami.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_menu_tentangKami.setIconTextGap(16);
+        btn_menu_tentangKami.setSelected(true);
+        btn_menu_tentangKami.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menu_tentangKamiActionPerformed(evt);
+            }
+        });
+
+        btn_menu_keluar.setBackground(new java.awt.Color(41, 128, 185));
+        btn_menu_keluar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        btn_menu_keluar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_menu_keluar.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-exit-32.png")); // NOI18N
+        btn_menu_keluar.setText("Keluar");
+        btn_menu_keluar.setBorder(null);
+        btn_menu_keluar.setContentAreaFilled(false);
+        btn_menu_keluar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_menu_keluar.setIconTextGap(16);
+        btn_menu_keluar.setSelected(true);
+        btn_menu_keluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menu_keluarActionPerformed(evt);
             }
         });
 
@@ -218,6 +254,12 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_menu_tentangKami, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_menu_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,32 +282,38 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(btn_menu_orangtua, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_menu_kelas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_menu_tentangKami, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_menu_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         mainPanel.setBackground(new java.awt.Color(236, 240, 241));
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        berandaPanel.setBackground(new java.awt.Color(236, 240, 241));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel2.setText("Beranda");
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel10.setText("Beranda");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel2)
-                .addContainerGap(774, Short.MAX_VALUE))
+                .addComponent(jLabel10)
+                .addContainerGap(1621, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabel10)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -274,17 +322,19 @@ public class MainView extends javax.swing.JFrame {
         berandaPanelLayout.setHorizontalGroup(
             berandaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, berandaPanelLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         berandaPanelLayout.setVerticalGroup(
             berandaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(berandaPanelLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(635, Short.MAX_VALUE))
         );
 
         mainPanel.add(berandaPanel, "card2");
+
+        guruPanel.setBackground(new java.awt.Color(236, 240, 241));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -299,7 +349,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
-                .addContainerGap(819, Short.MAX_VALUE))
+                .addContainerGap(1666, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,6 +376,8 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel.add(guruPanel, "card3");
 
+        tingkatPanel.setBackground(new java.awt.Color(236, 240, 241));
+
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
@@ -339,7 +391,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addContainerGap(1634, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,11 +418,13 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel.add(tingkatPanel, "card4");
 
+        pelajaranPanel.setBackground(new java.awt.Color(236, 240, 241));
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel6.setText("Tingkat");
+        jLabel6.setText("Pelajaran");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -379,7 +433,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel6)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addContainerGap(1608, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,11 +460,13 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel.add(pelajaranPanel, "card5");
 
+        siswaPanel.setBackground(new java.awt.Color(236, 240, 241));
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel7.setText("Tingkat");
+        jLabel7.setText("Siswa");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -419,7 +475,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel7)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addContainerGap(1654, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,11 +502,13 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel.add(siswaPanel, "card6");
 
+        orangTuaPanel.setBackground(new java.awt.Color(236, 240, 241));
+
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel8.setText("Tingkat");
+        jLabel8.setText("Orang Tua Siswa");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -459,7 +517,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel8)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addContainerGap(1503, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,6 +544,8 @@ public class MainView extends javax.swing.JFrame {
 
         mainPanel.add(orangTuaPanel, "card7");
 
+        kelasPanel.setBackground(new java.awt.Color(236, 240, 241));
+
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
@@ -499,7 +559,7 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel9)
-                .addContainerGap(812, Short.MAX_VALUE))
+                .addContainerGap(1659, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,9 +591,9 @@ public class MainView extends javax.swing.JFrame {
         bodyPanelLayout.setHorizontalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyPanelLayout.createSequentialGroup()
-                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1769, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,7 +605,7 @@ public class MainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 2035, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,31 +618,114 @@ public class MainView extends javax.swing.JFrame {
 
     private void btn_menu_pelajaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_pelajaranActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(pelajaranPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_pelajaranActionPerformed
 
     private void btn_menu_guru1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_guru1ActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(guruPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_guru1ActionPerformed
 
     private void btn_menu_tingkat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_tingkat1ActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(tingkatPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_tingkat1ActionPerformed
 
     private void btn_menu_siswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_siswaActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(siswaPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_siswaActionPerformed
 
     private void btn_menu_orangtuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_orangtuaActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(orangTuaPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_orangtuaActionPerformed
 
     private void btn_menu_kelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_kelasActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(kelasPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_kelasActionPerformed
 
     private void btn_menu_berandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_berandaActionPerformed
         // TODO add your handling code here:
+        //remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        //add panel
+        mainPanel.add(berandaPanel);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }//GEN-LAST:event_btn_menu_berandaActionPerformed
+
+    private void btn_menu_tentangKamiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_tentangKamiActionPerformed
+        // TODO add your handling code here:
+        AboutView aboutView = new AboutView();
+        aboutView.setVisible(true);
+            
+    }//GEN-LAST:event_btn_menu_tentangKamiActionPerformed
+
+    private void btn_menu_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menu_keluarActionPerformed
+        // TODO add your handling code here:
+        int dialogBtn = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this, "Keluar dari Sekolah Apps ? ", "Exit Confirmation", dialogBtn);
+        
+        if (dialogResult == 0) {
+            //true condition
+            System.exit(0);
+        }else{
+            //false condition
+        }
+    }//GEN-LAST:event_btn_menu_keluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -625,26 +768,28 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton btn_menu_beranda;
     private javax.swing.JButton btn_menu_guru1;
     private javax.swing.JButton btn_menu_kelas;
+    private javax.swing.JButton btn_menu_keluar;
     private javax.swing.JButton btn_menu_orangtua;
     private javax.swing.JButton btn_menu_pelajaran;
     private javax.swing.JButton btn_menu_siswa;
+    private javax.swing.JButton btn_menu_tentangKami;
     private javax.swing.JButton btn_menu_tingkat1;
     private javax.swing.JPanel guruPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel kelasPanel;
     private javax.swing.JPanel mainPanel;
