@@ -373,6 +373,7 @@ public class MainView extends javax.swing.JFrame {
         btn_guru_tambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-plus-math-16.png")); // NOI18N
         btn_guru_tambah.setText("Tambah Guru");
         btn_guru_tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_tambah.setPreferredSize(new java.awt.Dimension(120, 17));
         btn_guru_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_guru_tambahMouseClicked(evt);
@@ -854,7 +855,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void btn_guru_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guru_tambahMouseClicked
         // TODO add your handling code here:
-        guruTambahView guruTambah = new guruTambahView();
+        GuruTambahView guruTambah = new GuruTambahView();
         guruTambah.setVisible(true);
     }//GEN-LAST:event_btn_guru_tambahMouseClicked
 

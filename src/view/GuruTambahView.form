@@ -72,7 +72,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="42" max="32767" attributes="0"/>
-                                  <Component id="tf_guruTambah_lahir" min="-2" pref="149" max="-2" attributes="0"/>
+                                  <Component id="tf_guruTambah_tanggalLahir" min="-2" pref="149" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -113,7 +113,7 @@
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tf_guruTambah_idGuru" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_guruTambah_lahir" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="tf_guruTambah_tanggalLahir" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -198,7 +198,7 @@
             <Property name="text" type="java.lang.String" value="Lahir"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_guruTambah_lahir">
+        <Component class="javax.swing.JTextField" name="tf_guruTambah_tanggalLahir">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -260,6 +260,9 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Batal"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guruTambah_batalMouseClicked"/>
@@ -312,8 +315,12 @@
                   <Image iconType="2" name="C:\Users\tsisw\Downloads\Icons\provis_sekolah\icons8-add-new-24.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tambahkan"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guruTambah_tambahMouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guruTambah_tambahMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guruTambah_tambahMouseExited"/>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guruTambah_tambahMousePressed"/>

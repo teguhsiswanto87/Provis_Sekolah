@@ -9,6 +9,6 @@ package view;
  *
  * @author tsisw
  */
-public class main {
+public class Main {
     
 }

@@ -5,24 +5,66 @@
  */
 package view;
 
+import controller.GuruController;
+import event.GuruListener;
 import java.awt.Color;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
+import model.GuruModel;
 
 /**
  *
  * @author tsisw
  */
-public class guruTambahView extends javax.swing.JFrame {
+public class GuruTambahView extends javax.swing.JFrame implements GuruListener {
 
     /**
-     * Creates new form guruTambahView
+     * KOMUNIKASIKAN MVC MVC --> komunikasikan semua view, model, dan controller
+     * di dalam view 1. Deklarasikan Model & Controller 2. Implement Listener
      */
-    public guruTambahView() {
-        initComponents();
+    
+    public GuruTambahView() {
+        //instansiasi
+        controller = new GuruController();
+        model = new GuruModel();
+
+        //set model ke dalam controller
+        model.setGuruListener(this);
+        controller.setModel(model); //setelah ini, kita bisa actionPerform btn
 
         setExtendedState(JFrame.MAXIMIZED_HORIZ);
         setVisible(true);
         setResizable(false);
+        
+        initComponents();
+    }
+    
+    private GuruModel model;
+    private GuruController controller;
+    
+    public JComboBox getCb_guruTambah_status() {
+        return cb_guruTambah_status;
+    }
+    
+    public JTextField getTf_guruTambah_email() {
+        return tf_guruTambah_email;
+    }
+    
+    public JTextField getTf_guruTambah_idGuru() {
+        return tf_guruTambah_idGuru;
+    }
+    
+    public JTextField getTf_guruTambah_lahir() {
+        return tf_guruTambah_tanggalLahir;
+    }
+    
+    public JTextField getTf_guruTambah_nama() {
+        return tf_guruTambah_nama;
+    }
+    
+    public JTextField getTf_guruTambah_telepon() {
+        return tf_guruTambah_telepon;
     }
 
     /**
@@ -45,7 +87,7 @@ public class guruTambahView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tf_guruTambah_telepon = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tf_guruTambah_lahir = new javax.swing.JTextField();
+        tf_guruTambah_tanggalLahir = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cb_guruTambah_status = new javax.swing.JComboBox();
         btn_guruTambah_batal_div = new javax.swing.JPanel();
@@ -91,6 +133,7 @@ public class guruTambahView extends javax.swing.JFrame {
         btn_guruTambah_batal.setForeground(new java.awt.Color(236, 240, 241));
         btn_guruTambah_batal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_guruTambah_batal.setText("Batal");
+        btn_guruTambah_batal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_guruTambah_batal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_guruTambah_batalMouseClicked(evt);
@@ -131,7 +174,11 @@ public class guruTambahView extends javax.swing.JFrame {
         btn_guruTambah_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_guruTambah_tambah.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-add-new-24.png")); // NOI18N
         btn_guruTambah_tambah.setText("Tambahkan");
+        btn_guruTambah_tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_guruTambah_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guruTambah_tambahMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn_guruTambah_tambahMouseEntered(evt);
             }
@@ -188,7 +235,7 @@ public class guruTambahView extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                                .addComponent(tf_guruTambah_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tf_guruTambah_tanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -217,7 +264,7 @@ public class guruTambahView extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(tf_guruTambah_idGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(tf_guruTambah_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_guruTambah_tanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -278,6 +325,12 @@ public class guruTambahView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_guruTambah_batalMouseClicked
 
+    private void btn_guruTambah_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guruTambah_tambahMouseClicked
+        // KITA HANYA MEMANGGIL CONTROLLER-NYA SAJA
+        controller.tambahGuru(this);
+//        controller.resetForm(this);
+    }//GEN-LAST:event_btn_guruTambah_tambahMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -295,20 +348,21 @@ public class guruTambahView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(guruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(guruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(guruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(guruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuruTambahView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new guruTambahView().setVisible(true);
+                new GuruTambahView().setVisible(true);
             }
         });
     }
@@ -329,8 +383,23 @@ public class guruTambahView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_guruTambah_email;
     private javax.swing.JTextField tf_guruTambah_idGuru;
-    private javax.swing.JTextField tf_guruTambah_lahir;
     private javax.swing.JTextField tf_guruTambah_nama;
+    private javax.swing.JTextField tf_guruTambah_tanggalLahir;
     private javax.swing.JTextField tf_guruTambah_telepon;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onChange(GuruModel listener) {
+        /*kita bisa mengisi apa yg dilakukan | ketika data berubah maka 
+         tampilannyapun akan berubah
+         *kita bisa set value yg sudah kita buat | nge-set dengan nge-get model
+         */
+        
+        tf_guruTambah_idGuru.setText(model.getId_guru());
+        tf_guruTambah_nama.setText(model.getId_guru());
+        tf_guruTambah_email.setText(model.getId_guru());
+        tf_guruTambah_tanggalLahir.setText(model.getId_guru());
+        tf_guruTambah_telepon.setText(model.getId_guru());
+        cb_guruTambah_status.setSelectedItem(model.getStatus());
+    }
 }
