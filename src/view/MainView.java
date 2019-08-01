@@ -5,15 +5,27 @@
  */
 package view;
 
+import controller.GuruController;
+import database.Database;
+import event.GuruListener;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import model.GuruModel;
+import table.GuruTableModel;
 
 /**
  *
  * @author tsisw
  */
 public class MainView extends javax.swing.JFrame {
+
+    GuruEditView guruEdit;
+    GuruTableModel guruTableModel;
+    Database db;
 
     /**
      * Creates new form MainView
@@ -25,6 +37,23 @@ public class MainView extends javax.swing.JFrame {
         setVisible(true);
         setResizable(false);
 
+        tampilGuru();
+    }
+
+    private GuruModel model;
+    private GuruController controller;
+
+    private void tampilGuru() {
+        db = new Database();
+        guruTableModel = new GuruTableModel();
+        guruTableModel.setData(db.tampil_semua_GuruModel());
+        tblGuru.setModel(guruTableModel);
+    }
+
+    private void refreshGuru() {
+        guruTableModel.setData(db.tampil_semua_GuruModel());
+        guruTableModel.fireTableDataChanged();
+        tblGuru.changeSelection(0, 0, false, false);
     }
 
     /**
@@ -58,6 +87,12 @@ public class MainView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btn_guru_tambah_div = new javax.swing.JPanel();
         btn_guru_tambah = new javax.swing.JLabel();
+        btn_guru_refresh = new javax.swing.JButton();
+        btn_guru_edit = new javax.swing.JButton();
+        btn_guru_hapus = new javax.swing.JButton();
+        tf_guru_cari = new javax.swing.JTextField();
+        btn_guru_cari = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGuru = new javax.swing.JTable();
         tingkatPanel = new javax.swing.JPanel();
@@ -335,7 +370,7 @@ public class MainView extends javax.swing.JFrame {
             berandaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(berandaPanelLayout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(641, Short.MAX_VALUE))
+                .addContainerGap(638, Short.MAX_VALUE))
         );
 
         mainPanel.add(berandaPanel, "card2");
@@ -403,6 +438,68 @@ public class MainView extends javax.swing.JFrame {
             .addComponent(btn_guru_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        btn_guru_refresh.setBackground(new java.awt.Color(255, 255, 255));
+        btn_guru_refresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-refresh-24.png")); // NOI18N
+        btn_guru_refresh.setToolTipText("Segarkan");
+        btn_guru_refresh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(39, 174, 96), new java.awt.Color(39, 174, 96), new java.awt.Color(39, 174, 96), new java.awt.Color(39, 174, 96)));
+        btn_guru_refresh.setContentAreaFilled(false);
+        btn_guru_refresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_refresh.setPreferredSize(new java.awt.Dimension(73, 40));
+        btn_guru_refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guru_refreshActionPerformed(evt);
+            }
+        });
+
+        btn_guru_edit.setBackground(new java.awt.Color(211, 84, 0));
+        btn_guru_edit.setForeground(new java.awt.Color(41, 128, 185));
+        btn_guru_edit.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-edit-property-24.png")); // NOI18N
+        btn_guru_edit.setText("Edit");
+        btn_guru_edit.setToolTipText("Klik datanya, kemudian klik edit");
+        btn_guru_edit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(41, 128, 185), new java.awt.Color(41, 128, 185), new java.awt.Color(41, 128, 185), new java.awt.Color(41, 128, 185)));
+        btn_guru_edit.setContentAreaFilled(false);
+        btn_guru_edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_edit.setIconTextGap(8);
+        btn_guru_edit.setOpaque(false);
+        btn_guru_edit.setPreferredSize(new java.awt.Dimension(73, 40));
+        btn_guru_edit.setSelected(true);
+        btn_guru_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guru_editActionPerformed(evt);
+            }
+        });
+
+        btn_guru_hapus.setForeground(new java.awt.Color(192, 57, 43));
+        btn_guru_hapus.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-trash-can-24.png")); // NOI18N
+        btn_guru_hapus.setText("Hapus");
+        btn_guru_hapus.setToolTipText("Klik datanya, kemudian klik hapus");
+        btn_guru_hapus.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(192, 57, 43), new java.awt.Color(192, 57, 43), new java.awt.Color(192, 57, 43), new java.awt.Color(192, 57, 43)));
+        btn_guru_hapus.setContentAreaFilled(false);
+        btn_guru_hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_hapus.setPreferredSize(new java.awt.Dimension(73, 40));
+        btn_guru_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guru_hapusActionPerformed(evt);
+            }
+        });
+
+        tf_guru_cari.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        tf_guru_cari.setToolTipText("");
+        tf_guru_cari.setBorder(null);
+        tf_guru_cari.setPreferredSize(new java.awt.Dimension(59, 40));
+
+        btn_guru_cari.setBackground(new java.awt.Color(142, 68, 173));
+        btn_guru_cari.setIcon(new javax.swing.ImageIcon("C:\\Users\\tsisw\\Downloads\\Icons\\provis_sekolah\\icons8-search-24.png")); // NOI18N
+        btn_guru_cari.setBorder(null);
+        btn_guru_cari.setContentAreaFilled(false);
+        btn_guru_cari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guru_cari.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_guru_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guru_cariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -410,19 +507,46 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 683, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(tf_guru_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_guru_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2))
+                .addGap(46, 46, 46)
+                .addComponent(btn_guru_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_guru_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_guru_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btn_guru_tambah_div, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(btn_guru_tambah_div, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_guru_edit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_guru_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_guru_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel4))
+                    .addComponent(btn_guru_tambah_div, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_guru_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_guru_cari, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jScrollPane1.setBorder(null);
 
         tblGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -458,8 +582,8 @@ public class MainView extends javax.swing.JFrame {
             guruPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(guruPanelLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
                 .addGap(54, 54, 54))
         );
 
@@ -859,6 +983,64 @@ public class MainView extends javax.swing.JFrame {
         guruTambah.setVisible(true);
     }//GEN-LAST:event_btn_guru_tambahMouseClicked
 
+    private void btn_guru_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guru_refreshActionPerformed
+        // TODO add your handling code here:
+        tampilGuru();
+    }//GEN-LAST:event_btn_guru_refreshActionPerformed
+
+    private void btn_guru_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guru_hapusActionPerformed
+        // TODO add your handling code here:
+        //deteksi kursor berada di baris berapa
+        try {
+            db = new Database();
+//            mahasiswaTableModel tabelmahasiswa = new mahasiswaTableModel();
+
+            int baris = tblGuru.getSelectedRow();
+            String id_guru = (String) tblGuru.getValueAt(baris, 0);
+            String nama = (String) tblGuru.getValueAt(baris, 1);
+            Object[] pilihan = {"Ya", "Tidak"};
+            int jawaban = JOptionPane.showOptionDialog(null, "Anda Yakin Data guru "
+                    + "dengan ID Guru " + id_guru + " dengan Nama " + nama + " akan dihapus ?", "Peringatan", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, pilihan, pilihan[0]);
+            if (jawaban == 0) {
+                db.hapus_guru(id_guru);
+                refreshGuru();
+            }
+        }//end TRY
+        catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin dihapus !!!");
+        }
+    }//GEN-LAST:event_btn_guru_hapusActionPerformed
+
+    private void btn_guru_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guru_editActionPerformed
+        // TODO add your handling code here:
+        guruEdit = new GuruEditView();
+//        guruEdit.setVisible(true);
+
+//        lakukan pengecekan data berdasarkan cursor
+        int baris = tblGuru.getSelectedRow();
+        String id_guru = (String) guruTableModel.getValueAt(baris, 0);
+        GuruModel guru = db.pilih_guru(id_guru);
+
+        if (guru != null) {
+            guruEdit.setForm(guru);
+            guruEdit.setVisible(true);
+            refreshGuru();
+        } else {
+            JOptionPane.showMessageDialog(null, "Guru dengan ID Guru " + id_guru
+                    + " tidak ditemukan");
+        }
+
+    }//GEN-LAST:event_btn_guru_editActionPerformed
+
+    private void btn_guru_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guru_cariActionPerformed
+        // TODO add your handling code here:
+        String kataCari = tf_guru_cari.getText().trim();
+        if (kataCari != null) {
+            guruTableModel.setData(db.cari_nama_guru(kataCari));
+            guruTableModel.fireTableDataChanged();
+        }
+    }//GEN-LAST:event_btn_guru_cariActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -897,6 +1079,10 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel berandaPanel;
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JButton btn_guru_cari;
+    private javax.swing.JButton btn_guru_edit;
+    private javax.swing.JButton btn_guru_hapus;
+    private javax.swing.JButton btn_guru_refresh;
     private javax.swing.JLabel btn_guru_tambah;
     private javax.swing.JPanel btn_guru_tambah_div;
     private javax.swing.JButton btn_menu_beranda;
@@ -926,6 +1112,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel kelasPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuPanel;
@@ -933,6 +1120,8 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel pelajaranPanel;
     private javax.swing.JPanel siswaPanel;
     private javax.swing.JTable tblGuru;
+    private javax.swing.JTextField tf_guru_cari;
     private javax.swing.JPanel tingkatPanel;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -5,6 +5,7 @@
  */
 package model;
 
+import database.Database;
 import event.GuruListener;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,7 @@ public class GuruModel {
     private String telepon;
     private String status;
 
+    private Database database;
     private GuruListener guruListener;
 
     //pasang getter setter dari listener yang sudah kita buat
@@ -93,18 +95,39 @@ public class GuruModel {
             guruListener.onChange(this);
         }
     }
-    
+
+    public GuruModel() {
+    }
+
+    public GuruModel(String id_guru, String nama, String email, String tanggal_lahir, String telepon, String status) {
+        setId_guru(id_guru);
+        setNama(nama);
+        setEmail(email);
+        setTanggal_lahir(tanggal_lahir);
+        setTelepon(telepon);
+        setStatus(status);
+    }
+
     public void resetForm() {
         setId_guru("");
         setNama("");
         setEmail("");
         setTanggal_lahir("");
         setTelepon("");
-        setStatus("");        
+        setStatus("");
     }
 
-    public void tambahGuru() {
+    public void tambahGuru(String id_guru, String nama, String email, String tanggal_lahir, String telepon, String status) {
+        database = new Database();
+        database.tambah_guru(id_guru, nama, email, tanggal_lahir, telepon, status);
         JOptionPane.showMessageDialog(null, "Guru BErhasil Ditambahkan");
+        resetForm();
+    }
+
+    public void perbaruiGuru(String id_guru, String nama, String email, String tanggal_lahir, String telepon, String status) {
+        database = new Database();
+        database.perbarui_guru(id_guru, nama, email, tanggal_lahir, telepon, status);
+        JOptionPane.showMessageDialog(null, "Perbarui Guru Berhasil");
         resetForm();
     }
 
